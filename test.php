@@ -6,32 +6,31 @@
 <body>
 <?php 
 // Create connection to Oracle
-$conn = oci_connect("ora_c3e0b", "a38106143", "ug");
+$conn = OCILogon("ora_c3e0b", "a38106143", "ug");
 if (!$conn) {
-   $m = oci_error();
-   echo $m['message'], "\n";
-   exit;
+  echo "error";
 }
 else {
-   print "Connected to Oracle!";
+   print "Connected to Oracle!<br>";
 }
 
+// Perform a simple query
 $query = "select * from customer";
 $stid = oci_parse($conn, $query);
 oci_execute($stid);
-echo "<table border='1'>\n";
-while($row = oci_fetch_array($stid), OCI_RETURN_NULLS+OCI_ASSOC) {
-	echo "<tr>\n";
-	foreach ($row as $item) {
-		echo " <td>".$item."<./td>\n";
-	}
-	echo "</tr>\n";
+print '<table border="1">';
+while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
+     print '<tr>';
+        foreach ($row as $item) {
+                 print '<td>'.($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp').'</td>';
+                    }
+        print '</tr>';
 }
-echo "</table>\n";
+print '</table>';
 
-
-// Close the Oracle connection
+// Close connection to Oracle
 oci_close($conn);
+echo "closed connection\n"
 ?>
 </body>
 </html>
