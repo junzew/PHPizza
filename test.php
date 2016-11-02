@@ -13,6 +13,7 @@ if (!$conn) {
 else {
    print "Connected to Oracle!<br>";
 }
+
 // Perform a simple query
 $query = "select * from customer";
 $stid = oci_parse($conn, $query);
@@ -26,6 +27,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
         print '</tr>';
 }
 print '</table>';
+
 // Close connection to Oracle
 oci_close($conn);
 echo "closed connection\n"
