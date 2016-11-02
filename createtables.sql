@@ -48,8 +48,8 @@ CREATE TABLE orderlist(
 	status INT,
 	points_used INT,
 	phone INT,
-	staff_id INT NOT NULL, 
-	branch_id INT NOT NULL, 
+	staff_id INT NOT NULL,
+	branch_id INT NOT NULL,
 	PRIMARY KEY (order_id),
 	FOREIGN KEY (staff_id) REFERENCES deliveryman(staff_id),
 	FOREIGN KEY (branch_id) REFERENCES branch(branch_id),
@@ -256,15 +256,12 @@ insert into includestop
 values(5, 042, 1);
 
 insert into orderitem
-values(1, 1, 1, 1, 1, 101); 
+values(1, 1, 1, 1, 1, 101);
 insert into orderitem
-values(2, 1, 2, 2, 1, 101); 
+values(2, 1, 2, 2, 1, 101);
 insert into orderitem
-values(3, 2, 4, 4, 1, 101); 
+values(3, 2, 4, 4, 1, 101);
 insert into orderitem
-values(4, 3, 4, 4, 2, 101); 
+values(4, 3, 4, 4, 2, 101);
 insert into orderitem
-values(5, 4, 5, 5, 4, 101); 
-
-
-
+values(5, 4, 5, 5, 4, 101);

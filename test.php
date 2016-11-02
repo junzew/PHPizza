@@ -4,7 +4,7 @@
 	<title>test</title>
 </head>
 <body>
-<?php 
+<?php
 // Create connection to Oracle
 $conn = OCILogon("ora_c3e0b", "a38106143", "ug");
 if (!$conn) {
