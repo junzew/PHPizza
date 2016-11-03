@@ -1,7 +1,8 @@
 @extends('layout')
 @section('content')
-        <h1>Address form</h1>
-        <form action="/order/address" method="POST" class="form-inline">
+<div class="container">
+            <h1>Address form</h1>
+        <form action="/order/address" method="POST">
                 <div class="col-lg-2">
                     City<input type="text" name="city" class="form-control">
                 </div>
@@ -12,7 +13,10 @@
                     Apartment number:<input type="text" name="apartmentnum" class="form-control">
                 </div>
                 <div class="col-lg-2">
-                    <button type="submit">submit</button>
+                    <button type="submit" class="btn btn-primary">submit</button>
                 </div>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </form>
+</div>
+
 @stop
