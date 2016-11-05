@@ -18,7 +18,7 @@
 		?>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		</select>
-	<input type="submit" value="switch city" class="btn">
+		<button type="submit" class="btn btn-sm" >switch branch</button>
 	</form>
 	<hr>
 	<form action="/order/review" method="POST">
@@ -37,8 +37,9 @@
 			?>
 			</tbody>
 		</table>
+		<br>
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<button type="submit">Order and pay</button>
+		<button type="submit" class="btn btn-primary">Order and pay</button>
 	</form>
 
 </div>

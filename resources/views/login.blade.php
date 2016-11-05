@@ -8,9 +8,10 @@
 		    </div>
 		@endif
 	<form action="/login" method="POST">
-		<div>Email: <input type="text" name="email"></div>
-		<div>Password: <input type="password" name="password"></div>
-		<button type="submit" class="btn btn-primary">Log in</button> 
+		<div>Email: <input type="text" name="email" class="form-control"></div>
+		<div>Password: <input type="password" name="password" class="form-control"></div>
+		<br>
+		<button type="submit" class="btn btn-primary" class="form-control">Log in</button> 
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	</form>
 </div>
