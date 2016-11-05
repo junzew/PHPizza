@@ -9,7 +9,6 @@ class OrderController extends Controller
     //
     public function address() {
         return redirect('/order/menu');
-    	//return request()->all();
     }
     public function cancel() {
     	return request()->all();

@@ -20,7 +20,7 @@ CREATE TABLE customer(
 CREATE TABLE member(
 	phone VARCHAR(255) PRIMARY KEY,
 	points INT,
-	email VARCHAR(255),
+	email VARCHAR(255) UNIQUE,
 	password VARCHAR(20),
 	FOREIGN KEY (phone) REFERENCES customer(phone)
 );
