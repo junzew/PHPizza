@@ -21,27 +21,25 @@
 	<input type="submit" value="switch city" class="btn">
 	</form>
 	<hr>
-	// TODO
-	<form action="#" method="POST">
+	<form action="/order/review" method="POST">
 		<table border="1">
 			<thead><tr><td> Flavor </td><td> Price($) </td><td> Description </td><td>Quantity</td></tr></thead>
 			<tbody>
 			<?php
 				while($row = mysqli_fetch_array($options, MYSQLI_ASSOC)) {
 					echo '<tr>
-					<td>'.$row['pizza'].'</td>
-					<td>'.$row['price'].'</td>
+					<td>'.$row['pizza'].'<input type="hidden" name="pizza[]" value="'.$row['pizza'].' "></td>
+					<td>'.$row['price'].'<input type="hidden" name="price[]" value="'.$row['price'].' "></td>
 					<td>'.$row['description'].'</td>
-					<td><input type="number" name="quantity"></td>
+					<td><input type="number" name="quantity[]"></td>
 					</tr>';
 				}
 			?>
 			</tbody>
 		</table>
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<button type="submit">Order and pay</button>
 	</form>
 
-
-
-	<button type="submit">Confirm order</button>
 </div>
 @stop

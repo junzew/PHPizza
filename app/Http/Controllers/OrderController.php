@@ -15,6 +15,10 @@ class OrderController extends Controller
         // mysqli_close($dbc);
         return redirect('/order/menu');
     }
+    public function review() {
+        return view('review');
+    }
+
     public function cancel() {
     	return request()->all();
     }

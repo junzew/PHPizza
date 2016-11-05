@@ -43,9 +43,7 @@ Route::get('/order/menu/item/{id}', function() {
 });
 
 // review order
-Route::get('/order/review', function() {
-	// TODO
-});
+Route::post('/order/review', 'OrderController@review');
 
 // submit order
 Route::put('/order/submit', 'OrderController@submit'); // TODO
