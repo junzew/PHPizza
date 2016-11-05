@@ -3,16 +3,26 @@
 <div class="container">
             <h1>Address form</h1>
         <form action="/order/address" method="POST">
-                <div class="col-lg-2">
+                <div>
                     City<input type="text" name="city" class="form-control">
                 </div>
-                <div class="col-lg-2">
-                    Street number:<input type="text" name="streetnum" class="form-control">
+                <div>
+                    Street number:<input type="text" name="street" class="form-control">
                 </div>
-                <div class="col-lg-2">
-                    Apartment number:<input type="text" name="apartmentnum" class="form-control">
+                <div>
+                    Apartment number:<input type="text" name="apartment" class="form-control">
                 </div>
-                <div class="col-lg-2">
+                <div>
+                    First Name:<input type="text" name="first_name" class="form-control">
+                </div>
+                <div>
+                    Last Name:<input type="text" name="last_name" class="form-control">
+                </div>
+                <div>
+                    Phone Number:<input type="text" name="phone" class="form-control">
+                </div>
+                <br>
+                <div>
                     <button type="submit" class="btn btn-primary">submit</button>
                 </div>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -8,8 +8,8 @@ class OrderController extends Controller
 {
     //
     public function address() {
-    	echo "string";
-    	return request()->all();
+        return redirect('/order/menu');
+    	//return request()->all();
     }
     public function cancel() {
     	return request()->all();
