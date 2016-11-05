@@ -8,6 +8,11 @@ class OrderController extends Controller
 {
     //
     public function address() {
+        // insert the customer info into
+        // $dbc = mysqli_connect('localhost',"root", "","phpizza") or die('Error connect');
+        // $query = "";
+        // $result = mysqli_query($dbc, $query) or die('Error querying database.');
+        // mysqli_close($dbc);
         return redirect('/order/menu');
     }
     public function cancel() {

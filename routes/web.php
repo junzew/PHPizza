@@ -33,9 +33,9 @@ Route::get('/order/address', function() {
 Route::post('/order/address', 'OrderController@address'); // TODO
 
 // display menu
-Route::get('/order/menu', function() {
-	return view('menu');
-});
+Route::get('/order/menu', 'MenuController@refresh');
+
+Route::post('/order/menu/', 'MenuController@refresh');
 
 // display details of a menu item
 Route::get('/order/menu/item/{id}', function() {
@@ -70,4 +70,9 @@ Route::get('/signup', function() {
 });
 
 Route::post('/signup', 'SignUpController@signup');
+
+
+Route::get('/user', function() {
+	return view('user');
+});
 

@@ -14,8 +14,8 @@ class LoginController extends Controller
     	$query = "SELECT COUNT(*) as count FROM member WHERE email = '$email' ";
     	$result = mysqli_query($dbc, $query) or die('error');
     	$row = mysqli_fetch_array($result);
-    	$url = '/order/menu'; // redirect to menu page by default
-    	$message = 'login success';
+    	$url = '/user'; // redirect to menu page by default
+    	$message = 'Login success';
     	// User does not exist in database
     	if ($row["count"] == 0) {
     		echo 'DNE';
