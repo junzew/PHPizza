@@ -202,22 +202,41 @@ values(101, 4, 10.00, 4.25, 4);
 insert into menuitem
 values(101, 5, 13.00, 5.50, 5);
 insert into menuitem
-values(102, 10, 7.00, 4.00, 1);
+values(102, 1, 9.00, 6.00, 1);
+insert into menuitem
+values(102, 2, 10.00, 7.00, 2);
+insert into menuitem
+values(102, 3, 8.00, 5.00, 3);
+insert into menuitem
+values(103, 1, 7.00, 6.00, 2);
+insert into menuitem
+values(103, 2, 9.00, 5.00, 5);
+insert into menuitem
+values(201, 1, 10.50, 6.50, 3);
+insert into menuitem
+values(201, 2, 11.00, 7.50, 4);
+insert into menuitem
+values(301, 1, 8.00, 5.50, 2);
+insert into menuitem
+values(401, 1, 9.00, 6.50, 1);
+insert into menuitem
+values(402, 1, 10.00, 6.50, 4);
+
 
 insert into toppingitem
-values(011, 1.00, 0.50, 'Mozzerella-S');
+values(011, 1.00, 0.50, 'Olive');
 insert into toppingitem
-values(012, 1.15, 0.60, 'Mozzerella-M');
+values(012, 1.15, 0.60, 'Mushroom');
 insert into toppingitem
-values(013, 1.35, 0.75, 'Mozzerella-L');
+values(013, 1.35, 0.75, 'Mozzerella');
 insert into toppingitem
-values(022, 1.00, 0.50, 'Pepperoni-M');
+values(022, 1.00, 0.50, 'Pepperoni');
 insert into toppingitem
-values(032, 1.00, 0.50, 'Sausage-M');
+values(032, 1.00, 0.50, 'Sausage');
 insert into toppingitem
-values(042, 1.00, 0.50, 'Ham-M');
+values(042, 1.00, 0.50, 'Ham');
 insert into toppingitem
-values(052, 0.75, 0.40, 'Pinapple-M');
+values(052, 0.75, 0.40, 'Pinapple');
 
 insert into toppingset
 values(1);
