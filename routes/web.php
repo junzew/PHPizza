@@ -70,7 +70,24 @@ Route::get('/signup', function() {
 Route::post('/signup', 'SignUpController@signup');
 
 
-Route::get('/user', function() {
-	return view('user');
+Route::get('/user/{phone}', function($phone) {
+	$dbc = mysqli_connect('localhost',"root", "","phpizza") or die('Error connect');
+	$query = "SELECT m.points, m.email, c.first_name FROM member m, customer c WHERE m.phone = '$phone' AND c.phone = m.phone";
+    $result = mysqli_query($dbc, $query) or die('error');
+    $row = mysqli_fetch_array($result);
+    $points = $row['points'];
+    $email = $row['email'];
+    $first_name = $row['first_name'];
+	mysqli_close($dbc);
+	return view('user', compact('points', 'email', 'first_name', 'phone'));
+});
+
+Route::get('/user/{phone}/history', function($phone) {
+	$dbc = mysqli_connect('localhost',"root", "","phpizza") or die('Error connect');
+	$query = "SELECT order_id, order_date, status FROM orderlist WHERE phone = '$phone' ";
+    $history = mysqli_query($dbc, $query) or die('error');
+    mysqli_close($dbc);
+    return view('history', compact('history'));
+
 });
 

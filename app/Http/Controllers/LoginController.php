@@ -18,7 +18,6 @@ class LoginController extends Controller
     	$message = 'Login success';
     	// User does not exist in database
     	if ($row["count"] == 0) {
-    		echo 'DNE';
     		$message = "You haven't signed up for membership.";
     		$url = '/login';
     	} else {
@@ -29,7 +28,14 @@ class LoginController extends Controller
     		if ($row['count'] == 0) {
     			$url = '/login';
     			$message = "Wrong password.";
-    		}
+    		} else {
+                // get phone number of member
+                $query = "SELECT phone FROM member WHERE email = '$email' AND password = '$password' ";
+                $result = mysqli_query($dbc, $query) or die('error');
+                $row = mysqli_fetch_array($result);
+                $url .= '/'.$row['phone'];
+                echo $url;
+            }
     	}
 		mysqli_close($dbc);
     	return redirect($url)->with('message', $message);

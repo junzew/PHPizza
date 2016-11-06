@@ -79,7 +79,7 @@
 
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<hr>
-		<button type="submit" class="btn btn-primary">Order and pay</button>
+		<button type="submit" class="btn btn-primary">Order</button>
 	</form>
 </div>
 @stop

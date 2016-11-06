@@ -1,8 +1,37 @@
 @extends('layout')
 @section('content')
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    $('#contact').validate({ // initialize the plugin
+        rules: {
+            first_name: {
+                required: true
+            },
+            last_name: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            address: {
+                required: true
+            }
+        },
+        messages: {
+            first_name: "Please enter your first name",
+            last_name: "Please enter your last name",
+            phone: "Please enter your phone number",
+            address: "Please enter your address"
+        }
+    });
+});
+</script>
 <div class="container">
             <h1>How do we contact you?</h1>
-        <form action="/order/address" method="POST">
+        <form id="contact" action="/order/address" method="POST">
                 <div>
                     Phone Number:<input type="text" name="phone" class="form-control">
                 </div>
