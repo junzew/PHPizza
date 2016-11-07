@@ -3,15 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Helpers\Database;
 
 class OrderController extends Controller {
-
-    private $db;
-
-    function __construct() {
-      $this->db = new Database();
-    }
 
     public function address() {
         // insert the customer info into
@@ -39,7 +32,9 @@ class OrderController extends Controller {
         }
 
         $query = 'SELECT topping_id, price, t_name AS topping FROM toppingitem WHERE topping_id IN ('.$ids.' )';
-        $selected_toppings = $this->db->query($dbc, $query);
+
+        $selected_toppings = $this->db->query($query);
+
       }
 
       return view('review', compact('selected_toppings'));
@@ -56,9 +51,5 @@ class OrderController extends Controller {
     }
     public function delete() {
 		return request()->all();
-    }
-
-    function __destruct() {
-      unset($this->db);
     }
 }

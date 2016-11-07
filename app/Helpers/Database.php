@@ -19,7 +19,8 @@ class Database
 
   function query($query)
   {
-    return mysqli_query($this->dbc, $query) or die('Error querying database.');
+    $results = mysqli_query($this->dbc, $query) or die('Error querying database.');
+    return $results;
   }
 
   function __destruct()
