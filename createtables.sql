@@ -1,26 +1,26 @@
-drop table orderitem;
-drop table includestop;
-drop table toppingset;
-drop table toppingitem;
-drop table menuitem;
-drop table pizzatype;
-drop table orderlist;
-drop table deliveryman;
-drop table branch;
-drop table region;
-drop table member;
-drop table customer;
+drop table if exists orderitem;
+drop table if exists includestop;
+drop table if exists toppingset;
+drop table if exists toppingitem;
+drop table if exists menuitem;
+drop table if exists pizzatype;
+drop table if exists orderlist;
+drop table if exists deliveryman;
+drop table if exists branch;
+drop table if exists region;
+drop table if exists member;
+drop table if exists customer;
 
 CREATE TABLE customer(
-	phone INT PRIMARY KEY,
+	phone VARCHAR(255) PRIMARY KEY,
 	address VARCHAR(255),
 	first_name VARCHAR(255),
 	last_name VARCHAR(255)
 );
 CREATE TABLE member(
-	phone INT PRIMARY KEY,
+	phone VARCHAR(255) PRIMARY KEY,
 	points INT,
-	email VARCHAR(255),
+	email VARCHAR(255) UNIQUE,
 	password VARCHAR(20),
 	FOREIGN KEY (phone) REFERENCES customer(phone)
 );
@@ -47,7 +47,7 @@ CREATE TABLE orderlist(
 	order_time TIMESTAMP,
 	status INT,
 	points_used INT,
-	phone INT,
+	phone VARCHAR(255),
 	staff_id INT NOT NULL,
 	branch_id INT NOT NULL,
 	PRIMARY KEY (order_id),
@@ -63,16 +63,16 @@ CREATE TABLE pizzatype(
 CREATE TABLE menuitem(
 	branch_id INT,
 	pizza_number INT,
-	price NUMBER(10,2),
-	cost NUMBER(10,2),
+	price DECIMAL(10,2),
+	cost DECIMAL(10,2),
 	type_id INT,
 	PRIMARY KEY (branch_id, pizza_number),
 	FOREIGN KEY (type_id) REFERENCES pizzatype(type_id)
 );
 CREATE TABLE toppingitem(
 	topping_id INT PRIMARY KEY,
-	price NUMBER(10,2),
-	cost NUMBER(10,2),
+	price DECIMAL(10,2),
+	cost DECIMAL(10,2),
 	t_name VARCHAR(255)
 );
 CREATE TABLE toppingset(
@@ -96,41 +96,41 @@ CREATE TABLE orderitem(
 	PRIMARY KEY (order_id, oitem_id),
 	FOREIGN KEY (order_id) REFERENCES orderlist(order_id),
 	FOREIGN KEY (topset_id) REFERENCES toppingset(topset_id),
-	FOREIGN KEY (pizza_number, branch_id) REFERENCES menuitem(pizza_number, branch_id)
+	FOREIGN KEY (branch_id, pizza_number) REFERENCES menuitem(branch_id, pizza_number)
 );
 
 
 insert into customer
-values(2223334444, '1454 - Ronayne Road', 'Sebastian', 'Wels-Lopez');
+values('2223334444', '1454 - Ronayne Road', 'Sebastian', 'Wels-Lopez');
 insert into customer
-values(1110005555, '324 - E27th Street', 'Adrian', 'Wong');
+values('1110005555', '324 - E27th Street', 'Adrian', 'Wong');
 insert into customer
-values(9998887777, '1423 - Dempsey Street', 'Connor', 'Ashcroft');
+values('9998887777', '1423 - Dempsey Street', 'Connor', 'Ashcroft');
 insert into customer
-values(8883335555, '2454 - Rose Court', 'Emily', 'Henry');
+values('8883335555', '2454 - Rose Court', 'Emily', 'Henry');
 insert into customer
-values(3338884444, '9023 - Rainy Road', 'Carey', 'Yu');
+values('3338884444', '9023 - Rainy Road', 'Carey', 'Yu');
 insert into customer
-values(1112223333, '1124 - Best Street', 'Junze', 'Wu');
+values('1112223333', '1124 - Best Street', 'Junze', 'Wu');
 insert into customer
-values(6665554444, '6234 - Sunny Drive', 'Peter', 'Siemens');
+values('6665554444', '6234 - Sunny Drive', 'Peter', 'Siemens');
 insert into customer
-values(8887773333, '121 - Folger Road', 'Matthew', 'Fung');
+values('8887773333', '121 - Folger Road', 'Matthew', 'Fung');
 insert into customer
-values(1112224444, '1454 - Ronayne Road', 'Mattias', 'Wels-Lopez');
+values('1112224444', '1454 - Ronayne Road', 'Mattias', 'Wels-Lopez');
 insert into customer
-values(1112225555, '1454 - Ronayne Road', 'Christian', 'Wels-Lopez');
+values('1112225555', '1454 - Ronayne Road', 'Christian', 'Wels-Lopez');
 
 insert into member
-values(2223334444, 1300, 'seby_wels@email.com', 'sebastian');
+values('2223334444', 1300, 'seby_wels@email.com', 'sebastian');
 insert into member
-values(1110005555, 2400, 'adrian_wong@email.com', 'adrian');
+values('1110005555', 2400, 'adrian_wong@email.com', 'adrian');
 insert into member
-values(9998887777, 0, 'connor_ashcroft@email.com', 'connor');
+values('9998887777', 0, 'connor_ashcroft@email.com', 'connor');
 insert into member
-values(8883335555, 60, 'emily_henry@email.com', 'emily');
+values('8883335555', 60, 'emily_henry@email.com', 'emily');
 insert into member
-values(3338884444, 450, 'carey_yu@email.com', 'carey');
+values('3338884444', 450, 'carey_yu@email.com', 'carey');
 
 insert into region
 values(1, 'Vancouver');
@@ -202,22 +202,41 @@ values(101, 4, 10.00, 4.25, 4);
 insert into menuitem
 values(101, 5, 13.00, 5.50, 5);
 insert into menuitem
-values(102, 10, 7.00, 4.00, 1);
+values(102, 1, 9.00, 6.00, 1);
+insert into menuitem
+values(102, 2, 10.00, 7.00, 2);
+insert into menuitem
+values(102, 3, 8.00, 5.00, 3);
+insert into menuitem
+values(103, 1, 7.00, 6.00, 2);
+insert into menuitem
+values(103, 2, 9.00, 5.00, 5);
+insert into menuitem
+values(201, 1, 10.50, 6.50, 3);
+insert into menuitem
+values(201, 2, 11.00, 7.50, 4);
+insert into menuitem
+values(301, 1, 8.00, 5.50, 2);
+insert into menuitem
+values(401, 1, 9.00, 6.50, 1);
+insert into menuitem
+values(402, 1, 10.00, 6.50, 4);
+
 
 insert into toppingitem
-values(011, 1.00, 0.50, 'Mozzerella-S');
+values(011, 1.00, 0.50, 'Olive');
 insert into toppingitem
-values(012, 1.15, 0.60, 'Mozzerella-M');
+values(012, 1.15, 0.60, 'Mushroom');
 insert into toppingitem
-values(013, 1.35, 0.75, 'Mozzerella-L');
+values(013, 1.35, 0.75, 'Mozzerella');
 insert into toppingitem
-values(022, 1.00, 0.50, 'Pepperoni-M');
+values(022, 1.00, 0.50, 'Pepperoni');
 insert into toppingitem
-values(032, 1.00, 0.50, 'Sausage-M');
+values(032, 1.00, 0.50, 'Sausage');
 insert into toppingitem
-values(042, 1.00, 0.50, 'Ham-M');
+values(042, 1.00, 0.50, 'Ham');
 insert into toppingitem
-values(052, 0.75, 0.40, 'Pinapple-M');
+values(052, 0.75, 0.40, 'Pinapple');
 
 insert into toppingset
 values(1);
