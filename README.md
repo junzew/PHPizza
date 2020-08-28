@@ -27,7 +27,7 @@ A delivery man with a unique staff_id delivers orders. Orders are assigned to th
 We use PHP to create a simple webapp interface for our application. We make use of the framework Laravel to assist with tasks like templating and URL routing, but we aren't using an ORM or any kind of object-database mapper.
 
 ## Deployment and Running
-See [blog post](https://junzew.github.io/blog/php/mysql/ubuntu/ec2/lamp/2018/01/06/Deploying-a-database-application-to-LAMP-stack.html) on how to deployment to an AWS EC2 instance.
+See [blog post](https://junzew.github.io/blog/php/mysql/ubuntu/ec2/lamp/2018/01/06/Deploying-a-database-application-to-LAMP-stack.html) on how to deploy to an AWS EC2 instance.
 
 Start the server with:
 `php artisan serve`
@@ -131,115 +131,114 @@ CREATE TABLE orderitem(
 
 1. View pizza options
 
-  User: Customer
+   User: Customer
 
-  Input: branch id
+   Input: branch id
 
-  Output: A list of pizza options
+   Output: A list of pizza options
 
-  Basic Case: Display all the available pizza options offered at the given branch.
+   Basic Case: Display all the available pizza options offered at the given branch.
 
 2. Place order
 
-  User: Customer
+   User: Customer
 
-  Input: customer name, phone number, address, pizza id, quantity
+   Input: customer name, phone number, address, pizza id, quantity
 
-  Output: "OK" or "Error, order is empty."
+   Output: "OK" or "Error, order is empty."
 
-  Basic Case: Insert a new order record into the database with a unique ID, along with the current date and time. Automatically assign the order to an available delivery man. Calculate the total price and display to the customer.
+   Basic Case: Insert a new order record into the database with a unique ID, along with the current date and time. Automatically assign the order to an available delivery man. Calculate the total price and display to the customer.
 
-  Exceptions:
-If the customer tries to place an empty order, return “Error, order is empty”.
+   Exceptions: If the customer tries to place an empty order, return “Error, order is empty”.
 
 3. Sign up for membership
 
-  User: Customer
+   User: Customer
 
-  Input: customer name, phone number, address, email address
+   Input: customer name, phone number, address, email address
 
-  Output: "OK" or "Error, already a member"
+   Output: "OK" or "Error, already a member"
 
-  Basic Case:  If the customer is not a member, register the customer by inserting a new record into the member table, then return "OK".
+   Basic Case:  If the customer is not a member, register the customer by inserting a new record into the member table, then return "OK".
 
-  Exceptions: If the customer is already a member, return “Error, already a member”.
+   Exceptions: If the customer is already a member, return “Error, already a member”.
 
 4. View membership information
 
-  User: Customer
+   User: Customer
 
-  Input: email address
+   Input: email address
 
-  Output: Membership information including total number of points, “Error, not a member”
+   Output: Membership information including total number of points, “Error, not a member”
 
-  Basic Case: Find the member with the given email address and return their membership information
+   Basic Case: Find the member with the given email address and return their membership information
 
-  Exceptions: If the customer is not a member, return “Error, not a member”.
+   Exceptions: If the customer is not a member, return “Error, not a member”.
 
 5. List orders for a local branch
 
-  User: Manager
+   User: Manager
 
-  Input: branch id
+   Input: branch id
 
-  Output: A list of orders
+   Output: A list of orders
 
-  Basic Case: Displays a list of active orders at the given branch.
+   Basic Case: Displays a list of active orders at the given branch.
 
 6. View the assigned list of orders to be delivered
 
-  User: Delivery Man
+   User: Delivery Man
 
-  Input: staff id
+   Input: staff id
 
-  Output: A list of orders
+   Output: A list of orders
 
-  Basic Case: Displays a list of active orders assigned to the given delivery man.
+   Basic Case: Displays a list of active orders assigned to the given delivery man.
 
 7. Complete order
 
-  User: Delivery Man
+   User: Delivery Man
 
-  Input: order id
+   Input: order id
 
-  Output: "Ok" or "Error, order has been complete"
+   Output: "Ok" or "Error, order has been complete"
 
-  Basic Case: If the order status is not completed, mark the order as completed and return "OK".
+   Basic Case: If the order status is not completed, mark the order as completed and return "OK".
 
-  Exceptions: If the order status is already completed, return "Error, order has been completed"
+   Exceptions: If the order status is already completed, return "Error, order has been completed"
 
 8. Add new pizza to menu
 
-  User: Manager
+   User: Manager
 
-  Input: name, price, cost, image url, branch id
+   Input: name, price, cost, image url, branch id
 
-  Output: "OK" or "Error, pizza already added."
+   Output: "OK" or "Error, pizza already added."
 
-  Basic Case: Inserts a new pizza record with the given information and returns "OK".
+   Basic Case: Inserts a new pizza record with the given information and returns "OK".
 
-  Exceptions: If there is already a pizza with the given name at that branch, return "Error, pizza already added".
+   Exceptions: If there is already a pizza with the given name at that branch, return "Error, pizza already added".
 
 9. Update pizza information
 
-  User: Manager
+   User: Manager
 
-  Input: name, price, cost, image url, branch id
+   Input: name, price, cost, image url, branch id
 
-  Output: "OK" or "Error, pizza does not exist"
+   Output: "OK" or "Error, pizza does not exist"
 
-  Basic Case: If a pizza with given name exists at the given branch, update the existing record with the given information and return “Ok”.
+   Basic Case: If a pizza with given name exists at the given branch, update the existing record with the given information and return “Ok”.
 
-  Exceptions: If no pizza record exists, return "Error, pizza does not exist"
+   Exceptions: If no pizza record exists, return "Error, pizza does not exist"
 
 10. Delete pizza from menu
 
-  User: Manager
+   User: Manager
 
-  Input: name, branch id
+   Input: name, branch id
 
-  Output: "Deleted" or "Error, pizza does not exist"
+   Output: "Deleted" or "Error, pizza does not exist"
 
-  Basic Case: Deletes the pizza with the given name and branch, returns "Deleted".
+   Basic Case: Deletes the pizza with the given name and branch, returns "Deleted".
 
-  Exceptions: If the pizza does not exist in the menu, return "Error, pizza does not exist"
+   Exceptions: If the pizza does not exist in the menu, return "Error, pizza does not exist"
