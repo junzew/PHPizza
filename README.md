@@ -233,12 +233,12 @@ CREATE TABLE orderitem(
 
 10. Delete pizza from menu
 
-   User: Manager
+    User: Manager
 
-   Input: name, branch id
+    Input: name, branch id
 
-   Output: "Deleted" or "Error, pizza does not exist"
+    Output: "Deleted" or "Error, pizza does not exist"
 
-   Basic Case: Deletes the pizza with the given name and branch, returns "Deleted".
+    Basic Case: Deletes the pizza with the given name and branch, returns "Deleted".
 
-   Exceptions: If the pizza does not exist in the menu, return "Error, pizza does not exist"
+    Exceptions: If the pizza does not exist in the menu, return "Error, pizza does not exist"
